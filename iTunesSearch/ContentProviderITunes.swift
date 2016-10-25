@@ -52,7 +52,7 @@ class ContentProviderITunes {
         baseURLComponents.queryItems?.append(searchQueryItem)
         
         // Use a specific media type
-        let mediaKindQueryItem = URLQueryItem(name: "kind", value: mediaKind.rawValue)
+        let mediaKindQueryItem = URLQueryItem(name: "entity", value: mediaKind.rawValue)
         baseURLComponents.queryItems?.append(mediaKindQueryItem)
 
         return baseURLComponents.url!

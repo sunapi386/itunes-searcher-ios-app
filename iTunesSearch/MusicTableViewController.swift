@@ -22,7 +22,7 @@ class MusicTableViewController: UITableViewController, UISearchBarDelegate {
             return
         }
         cp.searchTerm = searchTerm
-        debugPrint("searching \(searchTerm) : \(cp.parameterizedURL())")
+        cp.mediaKind = .musicVideo
         cp.performSearch()
     }
 
