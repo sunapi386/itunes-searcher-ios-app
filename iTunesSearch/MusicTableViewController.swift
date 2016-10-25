@@ -8,14 +8,30 @@
 
 import UIKit
 
-class MusicTableViewController: UITableViewController {
+class MusicTableViewController: UITableViewController, UISearchBarDelegate {
 
+    @IBOutlet weak var searchBar: UISearchBar!
     var content = ["Whatever", "Stranger Things", "24k Magic",
                    "Set Theory", "Friends", "Dexter", "Breaking Bad", "Lakers",
                    "2016 Election", "The Apprentice"]
 
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        guard let searchTerm = searchBar.text else {
+            return
+        }
+        debugPrint("search \(searchTerm)")
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        searchBar.delegate = self
+        let notificationName = NSNotification.Name(rawValue: "ContentProviderReceivedData")
+        NotificationCenter.default.addObserver(forName: notificationName, object: nil, queue: nil) { (notification: Notification) in
+            print("Data has reloaded")
+            //todo: update model / content
+
+            self.tableView.reloadData()
+        }
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
