@@ -13,6 +13,8 @@
 		9620A13C1DBFF23400CF77E0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9620A13B1DBFF23400CF77E0 /* Assets.xcassets */; };
 		9620A13F1DBFF23400CF77E0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9620A13D1DBFF23400CF77E0 /* LaunchScreen.storyboard */; };
 		9620A1471DBFF5BB00CF77E0 /* MusicTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9620A1461DBFF5BB00CF77E0 /* MusicTableViewController.swift */; };
+		9620A14B1DC0051C00CF77E0 /* ContentProviderITunes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9620A1491DC0051C00CF77E0 /* ContentProviderITunes.swift */; };
+		9620A14C1DC0051C00CF77E0 /* SongMediaCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9620A14A1DC0051C00CF77E0 /* SongMediaCollection.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +27,8 @@
 		9620A1401DBFF23400CF77E0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9620A1461DBFF5BB00CF77E0 /* MusicTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicTableViewController.swift; sourceTree = "<group>"; };
 		9620A1481DBFFCFA00CF77E0 /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = "<group>"; };
+		9620A1491DC0051C00CF77E0 /* ContentProviderITunes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentProviderITunes.swift; sourceTree = "<group>"; };
+		9620A14A1DC0051C00CF77E0 /* SongMediaCollection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongMediaCollection.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +61,8 @@
 		9620A1331DBFF23400CF77E0 /* iTunesSearch */ = {
 			isa = PBXGroup;
 			children = (
+				9620A1491DC0051C00CF77E0 /* ContentProviderITunes.swift */,
+				9620A14A1DC0051C00CF77E0 /* SongMediaCollection.swift */,
 				9620A1341DBFF23400CF77E0 /* AppDelegate.swift */,
 				9620A1361DBFF23400CF77E0 /* ViewController.swift */,
 				9620A1381DBFF23400CF77E0 /* Main.storyboard */,
@@ -141,8 +147,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9620A14B1DC0051C00CF77E0 /* ContentProviderITunes.swift in Sources */,
 				9620A1371DBFF23400CF77E0 /* ViewController.swift in Sources */,
 				9620A1351DBFF23400CF77E0 /* AppDelegate.swift in Sources */,
+				9620A14C1DC0051C00CF77E0 /* SongMediaCollection.swift in Sources */,
 				9620A1471DBFF5BB00CF77E0 /* MusicTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
