@@ -14,9 +14,15 @@ if var components = URLComponents(string: baseURL) {
     let session = URLSession.shared
     if let url = components.url {
         let task = session.dataTask(with: url, completionHandler: { (data: Data?, resp: URLResponse?, err: Error?) in
-            debugPrint(data)
-            debugPrint(resp)
-            debugPrint(err)
+            if let isErrored = err {
+                debugPrint(err)
+            }
+            if let unwrptData = data {
+                let jsonDict = try! JSONSerialization.jsonObject(with: unwrptData, options: []) as? [AnyHashable:Any]
+                if let allTracks = jsonDict?["results"] as? [[AnyHashable:Any]] {
+                    debugPrint(allTracks[1])
+                }
+            }
         })
         task.resume()
     }
