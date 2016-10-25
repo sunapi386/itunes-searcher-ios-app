@@ -7,24 +7,15 @@
 //
 
 import UIKit
+import AVFoundation
+import AVKit
 
 class MusicTableViewController: UITableViewController, UISearchBarDelegate {
 
     @IBOutlet weak var searchBar: UISearchBar!
     let cp = ContentProviderITunes()
-
-    var content: [String] = []
-
-//    func searchBarResultsListButtonClicked(_ searchBar: UISearchBar) {
-//        debugPrint("searchBarResultsListButtonClicked")
-//        self.content = []
-//        self.tableView.reloadData()
-//    }
-//    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-//        debugPrint("searchBarCancelButtonClicked")
-//        self.content = []
-//        self.tableView.reloadData()
-//    }
+    var content: [MediaItem]?
+    var player :AVPlayer?
 
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         guard let searchTerm = searchBar.text else {
@@ -46,9 +37,7 @@ class MusicTableViewController: UITableViewController, UISearchBarDelegate {
                 debugPrint("Got no items in search")
                 return
             }
-            self.content = mediaItems.map({ (mItem: MediaItem) -> String in
-                mItem.displayName
-            })
+            self.content = mediaItems
             self.tableView.reloadData()
         }
 
@@ -67,7 +56,7 @@ class MusicTableViewController: UITableViewController, UISearchBarDelegate {
     // MARK: - Table view data source
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return content.count
+        return content?.count ?? 0
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -75,50 +64,26 @@ class MusicTableViewController: UITableViewController, UISearchBarDelegate {
 
         // Configure the cell...
         let row = indexPath.row
-        let object = content[row]
-        cell.textLabel?.text = object
+        let object = content?[row]
+        cell.textLabel?.text = object?.displayName
 
         return cell
     }
 
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let row = indexPath.row
+        if let mItem = content?[row], let previewURL = mItem.previewUrl {
+            player = AVPlayer(url: previewURL)
+            let vc = AVPlayerViewController()
+            vc.player = player
+            present(vc, animated: true, completion: nil)
+            player!.play()
+        }
     }
-    */
 
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
     // MARK: - Navigation
 
+    /*
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
