@@ -12,6 +12,7 @@
 		9620A13A1DBFF23400CF77E0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9620A1381DBFF23400CF77E0 /* Main.storyboard */; };
 		9620A13C1DBFF23400CF77E0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9620A13B1DBFF23400CF77E0 /* Assets.xcassets */; };
 		9620A13F1DBFF23400CF77E0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9620A13D1DBFF23400CF77E0 /* LaunchScreen.storyboard */; };
+		9620A1471DBFF5BB00CF77E0 /* MusicTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9620A1461DBFF5BB00CF77E0 /* MusicTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		9620A13B1DBFF23400CF77E0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9620A13E1DBFF23400CF77E0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9620A1401DBFF23400CF77E0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9620A1461DBFF5BB00CF77E0 /* MusicTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +59,7 @@
 				9620A1341DBFF23400CF77E0 /* AppDelegate.swift */,
 				9620A1361DBFF23400CF77E0 /* ViewController.swift */,
 				9620A1381DBFF23400CF77E0 /* Main.storyboard */,
+				9620A1461DBFF5BB00CF77E0 /* MusicTableViewController.swift */,
 				9620A13B1DBFF23400CF77E0 /* Assets.xcassets */,
 				9620A13D1DBFF23400CF77E0 /* LaunchScreen.storyboard */,
 				9620A1401DBFF23400CF77E0 /* Info.plist */,
@@ -138,6 +141,7 @@
 			files = (
 				9620A1371DBFF23400CF77E0 /* ViewController.swift in Sources */,
 				9620A1351DBFF23400CF77E0 /* AppDelegate.swift in Sources */,
+				9620A1471DBFF5BB00CF77E0 /* MusicTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
