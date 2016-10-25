@@ -11,15 +11,28 @@ import UIKit
 class MusicTableViewController: UITableViewController, UISearchBarDelegate {
 
     @IBOutlet weak var searchBar: UISearchBar!
-    var content = ["Whatever", "Stranger Things", "24k Magic",
-                   "Set Theory", "Friends", "Dexter", "Breaking Bad", "Lakers",
-                   "2016 Election", "The Apprentice"]
+    let cp = ContentProviderITunes()
+
+    var content: [String] = []
+
+//    func searchBarResultsListButtonClicked(_ searchBar: UISearchBar) {
+//        debugPrint("searchBarResultsListButtonClicked")
+//        self.content = []
+//        self.tableView.reloadData()
+//    }
+//    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+//        debugPrint("searchBarCancelButtonClicked")
+//        self.content = []
+//        self.tableView.reloadData()
+//    }
 
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         guard let searchTerm = searchBar.text else {
             return
         }
-        debugPrint("search \(searchTerm)")
+        cp.searchTerm = searchTerm
+        debugPrint("searching \(searchTerm) : \(cp.parameterizedURL())")
+        cp.performSearch()
     }
 
     override func viewDidLoad() {
@@ -27,9 +40,15 @@ class MusicTableViewController: UITableViewController, UISearchBarDelegate {
         searchBar.delegate = self
         let notificationName = NSNotification.Name(rawValue: "ContentProviderReceivedData")
         NotificationCenter.default.addObserver(forName: notificationName, object: nil, queue: nil) { (notification: Notification) in
-            print("Data has reloaded")
+            debugPrint("\(notificationName) got notification \(notification)")
             //todo: update model / content
-
+            guard let mediaItems = self.cp.searchResults else {
+                debugPrint("Got no items in search")
+                return
+            }
+            self.content = mediaItems.map({ (mItem: MediaItem) -> String in
+                mItem.displayName
+            })
             self.tableView.reloadData()
         }
 
